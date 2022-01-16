@@ -1,0 +1,102 @@
+﻿<Window x:Class="TestWPFApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestWPFApp"
+        mc:Ignorable="d"
+        Title="Программа" Height="470" Width="800" ResizeMode="NoResize">
+    <DockPanel >
+        <Menu DockPanel.Dock="Top">
+            <MenuItem x:Name="file"  Header="Файл">
+                <MenuItem x:Name="createFile" Header="Создать" Click="createFile_Click"></MenuItem>
+                <MenuItem x:Name="openFile" Header="Открыть" Click="openFile_Click" ></MenuItem>
+                <MenuItem x:Name="saveFile" Header="Сохранить" Click="saveFile_Click"></MenuItem>
+                <MenuItem x:Name="exit" Header="Выйти" Click="exit_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="Edit" Header="Правка">
+                <MenuItem x:Name="fontStyle" Header="Шрифт">
+                    <MenuItem x:Name="TimesNewRomanFont" Header="Times New Roman" StaysOpenOnClick="True" IsCheckable="True" Click="TimesNewRomanFont_Click"></MenuItem>
+                    <MenuItem x:Name="VerdanaFont" Header="Verdana" StaysOpenOnClick="True"  IsCheckable="True" Click="Verdana_Click"></MenuItem>
+                </MenuItem>
+
+                <Separator/>
+
+                <MenuItem x:Name="copy" Header="Скопировать" Command="ApplicationCommands.Copy" InputGestureText="Ctrl + C" ></MenuItem>
+                <MenuItem x:Name="paste" Header="Вставить" Command="ApplicationCommands.Paste" InputGestureText="Ctrl + V"></MenuItem>
+                <MenuItem x:Name="cut" Header="Вырезать" Command="ApplicationCommands.Cut" InputGestureText="Ctrl + X"></MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="View" Header="Вид">
+                <MenuItem x:Name="colorBackground" Header="Цвет фона">
+                    <MenuItem x:Name="Red" Header="Красный" Click="Red_Click" StaysOpenOnClick="True" IsCheckable="True"></MenuItem>
+                    <MenuItem x:Name="Blue" Header="Синий" Click="Blue_Click" StaysOpenOnClick="True" IsCheckable="True"></MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="colorText" Header="Цвет текста">
+                    <MenuItem x:Name="redText" Header="Красный" Click="redText_Click" StaysOpenOnClick="True" IsCheckable="True"></MenuItem>
+                    <MenuItem x:Name="blueText" Header="Синий" Click="blueText_Click" StaysOpenOnClick="True" IsCheckable="True"></MenuItem>
+
+                </MenuItem>
+
+            </MenuItem>
+
+
+        </Menu>
+
+        <ToolBarTray DockPanel.Dock="Left" Orientation="Vertical" Width="100" Height="409">
+            <ToolBar Margin="10,10,-57,-8" >
+                <Button x:Name="btnCreateFile" Click="createFile_Click" HorizontalAlignment="Center" >
+                    <Image Source="./Resources/create.ico" Height="41" Width="38"/>
+                </Button>
+                <Label Height="19" Width="26" FontSize="8" >New</Label>
+
+                <Button x:Name="btnOpenFile" Click="openFile_Click" >
+                    <Image Source="./Resources/open.ico" Height="44" Width="40" HorizontalAlignment="Center"/>
+                </Button>
+
+                <Label Height="23" Width="35" FontSize="10">Open</Label>
+
+                <Button x:Name="btnSaveFile" Click="saveFile_Click" >
+                    <Image Source="./Resources/save.ico" Height="52" Width="52" HorizontalAlignment="Center"/>
+                </Button>
+                <Label Height="23" Width="30" FontSize="10">Save</Label>
+
+                <Button x:Name="btnCopyText" Command="ApplicationCommands.Copy" >
+                    <Image Source="./Resources/copy.ico" Height="52" Width="52" HorizontalAlignment="Center"/>
+                </Button>
+
+                <Label Height="23" Width="30" FontSize="8">Copy</Label>
+
+                <Label Height="24" Width="68" FontSize="8">Размер шрифта:</Label>
+                <ComboBox x:Name="selectFontSize" Height="18" Width="38" SelectionChanged="selectFontSize_SelectionChanged">
+                    <ComboBoxItem>10</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">14</ComboBoxItem>
+                    <ComboBoxItem>16</ComboBoxItem>
+                    <ComboBoxItem>20</ComboBoxItem>
+                    <ComboBoxItem>24</ComboBoxItem>
+                    <ComboBoxItem>48</ComboBoxItem>
+                </ComboBox>
+            </ToolBar>
+        </ToolBarTray>
+        <ToolBarTray DockPanel.Dock="Bottom" Orientation="Horizontal" Height="33">
+            <ToolBar>
+                <Label>Поиск</Label>
+                <TextBox x:Name="Search"  TextWrapping="Wrap" Width="348" Height="4" BorderBrush="Black"></TextBox>
+            </ToolBar>
+        </ToolBarTray>
+        <TabControl>
+            <TabItem Header="Регистрация">
+                <Grid Background="#34a8eb">
+                    <Label Content="Регистрация" HorizontalAlignment="Center" FontSize="50" FontFamily="Courier New"></Label>
+                    <TextBox x:Name="login" TextWrapping="Wrap" HorizontalAlignment="Center" Width="200" Height="30" Margin="0,105,0,223" />
+                    <PasswordBox x:Name="password" HorizontalAlignment="Center" Width="201" Height="30" Margin="0,151,0,177" />
+                    <Button x:Name="Auth" Content="Войти" Margin="319,193,319,140" Click="Auth_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Редактор">
+                <TextBox x:Name="textField" Height="376" Width="700" BorderBrush="Blue" />
+            </TabItem>
+        </TabControl>
+
+    </DockPanel>
+</Window>
+    
